@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   attr_accessor :incoming_channel
   
   #ASSOCIATIONS
-  has_many :my_feeds        , :dependent => :destroy
+  has_many :my_feeds             , :dependent => :destroy
   has_many :my_entries
   has_one  :authentication       , :dependent => :destroy
   has_many :tags                 , :dependent => :destroy
@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
   end
   
   def non_device_forms
-    incoming_channel == "change_password" ? true : false
+    incoming_channel.eql? "change_password"
   end
     
 end
